@@ -9,6 +9,11 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 
+// Add this new route to handle health checks and base URL visits
+app.get('/', (req, res) => {
+  res.status(200).send('Screenshot service is online and ready!');
+});
+
 app.get('/screenshot', async (req, res) => {
   const url = req.query.url;
   if (!url) {
